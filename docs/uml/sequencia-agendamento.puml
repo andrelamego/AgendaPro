@@ -1,0 +1,28 @@
+@startuml SequenciaAgendamento
+
+actor Cliente
+boundary Frontend as FE
+control "AgendamentoController" as CTRL
+control "AgendamentoService" as SERVICE
+database "DB" as DB
+
+Cliente -> FE : Seleciona serviço + profissional\n+ data desejada
+FE -> CTRL : GET /agendamentos/horarios-disponiveis
+CTRL -> SERVICE : listarHorariosDisponiveis(profissional, data, servico)
+SERVICE -> DB : consulta disponibilidades
+SERVICE -> DB : consulta agendamentos existentes
+DB --> SERVICE : resultados
+SERVICE --> CTRL : lista de horários livres
+CTRL --> FE : horários disponíveis
+
+Cliente -> FE : escolhe horário e confirma
+FE -> CTRL : POST /agendamentos\n(detalhes do agendamento)
+CTRL -> SERVICE : criarAgendamento(dto)
+SERVICE -> DB : verifica conflito de horário
+DB --> SERVICE : ok/erro
+SERVICE -> DB : persiste agendamento
+DB --> SERVICE : agendamento salvo
+SERVICE --> CTRL : dados do agendamento criado
+CTRL --> FE : resposta 201 Created
+
+@enduml

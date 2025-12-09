@@ -1,0 +1,73 @@
+@startuml DominiosAgendaPro
+
+skinparam classAttributeIconSize 0
+
+enum UserRole {
+  CLIENTE
+  PROFISSIONAL
+  ADMIN
+}
+
+enum AgendamentoStatus {
+  AGENDADO
+  CONFIRMADO
+  CANCELADO_CLIENTE
+  CANCELADO_PROFISSIONAL
+  NAO_COMPARECEU
+  CONCLUIDO
+}
+
+class User {
+  Long id
+  String nome
+  String email
+  String senhaHash
+  String telefone
+  UserRole role
+  LocalDateTime criadoEm
+  Boolean ativo
+}
+
+class Profissional {
+  Long id
+  String bio
+  Boolean aceitaNovosClientes
+  Boolean ativo
+}
+
+class Servico {
+  Long id
+  String nome
+  String descricao
+  Integer duracaoMinutos
+  BigDecimal preco
+  Boolean ativo
+}
+
+class Disponibilidade {
+  Long id
+  DayOfWeek diaSemana
+  LocalTime horaInicio
+  LocalTime horaFim
+}
+
+class Agendamento {
+  Long id
+  LocalDateTime dataHoraInicio
+  LocalDateTime dataHoraFim
+  AgendamentoStatus status
+  String observacoes
+  LocalDateTime criadoEm
+  LocalDateTime atualizadoEm
+  LocalDateTime canceladoEm
+  String motivoCancelamento
+}
+
+' RELAÇÕES
+User "1" -- "1" Profissional : usuario
+Profissional "1" -- "0..*" Disponibilidade : disponibilidades
+Profissional "1" -- "0..*" Agendamento : agendamentos
+User "1" -- "0..*" Agendamento : cliente
+Servico "1" -- "0..*" Agendamento : servico
+
+@enduml

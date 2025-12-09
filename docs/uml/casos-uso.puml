@@ -1,0 +1,47 @@
+@startuml CasosUsoAgendaPro
+
+left to right direction
+
+actor Cliente
+actor Profissional
+actor Admin
+
+rectangle "AgendaPro" {
+  usecase "Cadastrar-se\ncomo cliente" as UC1
+  usecase "Fazer login" as UC2
+  usecase "Visualizar\nserviços" as UC3
+  usecase "Visualizar\nhorários disponíveis" as UC4
+  usecase "Criar agendamento" as UC5
+  usecase "Cancelar agendamento" as UC6
+  usecase "Visualizar meus\nagendamentos" as UC7
+
+  usecase "Configurar\ndisponibilidade" as UC8
+  usecase "Visualizar agenda\ndo dia" as UC9
+  usecase "Confirmar\nagendamento" as UC10
+  usecase "Marcar como\nnão compareceu" as UC11
+
+  usecase "Cadastrar\nprofissional" as UC12
+  usecase "Cadastrar/editar\nserviço" as UC13
+  usecase "Visualizar\nrelatórios" as UC14
+}
+
+Cliente --> UC1
+Cliente --> UC2
+Cliente --> UC3
+Cliente --> UC4
+Cliente --> UC5
+Cliente --> UC6
+Cliente --> UC7
+
+Profissional --> UC2
+Profissional --> UC8
+Profissional --> UC9
+Profissional --> UC10
+Profissional --> UC11
+
+Admin --> UC2
+Admin --> UC12
+Admin --> UC13
+Admin --> UC14
+
+@enduml

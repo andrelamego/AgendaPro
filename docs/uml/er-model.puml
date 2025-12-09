@@ -1,0 +1,65 @@
+@startuml ERModelAgendaPro
+
+entity "USUARIOS" as USUARIOS {
+  * id : BIGINT <<PK>>
+  --
+  nome : VARCHAR
+  email : VARCHAR <<UNIQUE>>
+  senha_hash : VARCHAR
+  telefone : VARCHAR
+  role : VARCHAR
+  criado_em : TIMESTAMP
+  ativo : BOOLEAN
+}
+
+entity "PROFISSIONAIS" as PROFISSIONAIS {
+  * id : BIGINT <<PK>>
+  --
+  usuario_id : BIGINT <<FK>>
+  bio : TEXT
+  aceita_novos_clientes : BOOLEAN
+  ativo : BOOLEAN
+}
+
+entity "SERVICOS" as SERVICOS {
+  * id : BIGINT <<PK>>
+  --
+  nome : VARCHAR
+  descricao : VARCHAR
+  duracao_minutos : INT
+  preco : DECIMAL
+  ativo : BOOLEAN
+}
+
+entity "DISPONIBILIDADES" as DISPONIBILIDADES {
+  * id : BIGINT <<PK>>
+  --
+  profissional_id : BIGINT <<FK>>
+  dia_semana : VARCHAR
+  hora_inicio : TIME
+  hora_fim : TIME
+}
+
+entity "AGENDAMENTOS" as AGENDAMENTOS {
+  * id : BIGINT <<PK>>
+  --
+  profissional_id : BIGINT <<FK>>
+  cliente_id : BIGINT <<FK>>
+  servico_id : BIGINT <<FK>>
+  data_hora_inicio : TIMESTAMP
+  data_hora_fim : TIMESTAMP
+  status : VARCHAR
+  observacoes : TEXT
+  criado_em : TIMESTAMP
+  atualizado_em : TIMESTAMP
+  cancelado_em : TIMESTAMP
+  motivo_cancelamento : VARCHAR
+}
+
+USUARIOS ||--o{ PROFISSIONAIS : "1 : 0..1"
+PROFISSIONAIS ||--o{ DISPONIBILIDADES : "1 : N"
+PROFISSIONAIS ||--o{ AGENDAMENTOS : "1 : N"
+USUARIOS ||--o{ AGENDAMENTOS : "1 : N (como cliente)"
+SERVICOS ||--o{ AGENDAMENTOS : "1 : N"
+
+@enduml
