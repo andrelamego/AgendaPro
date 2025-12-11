@@ -2,7 +2,7 @@ package com.lamego.agendapro.service.implementation;
 
 import com.lamego.agendapro.domain.model.Disponibilidade;
 import com.lamego.agendapro.domain.model.Profissional;
-import com.lamego.agendapro.dto.command.AdicionarDisponibilidadeCommand;
+import com.lamego.agendapro.dto.disponibilidade.command.AdicionarDisponibilidadeCommand;
 import com.lamego.agendapro.repository.DisponibilidadeRepository;
 import com.lamego.agendapro.repository.ProfissionalRepository;
 import com.lamego.agendapro.service.interfaces.DisponibilidadeService;

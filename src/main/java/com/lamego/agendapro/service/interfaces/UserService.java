@@ -1,7 +1,7 @@
 package com.lamego.agendapro.service.interfaces;
 
 import com.lamego.agendapro.domain.model.User;
-import com.lamego.agendapro.dto.command.RegistrarClienteCommand;
+import com.lamego.agendapro.dto.user.command.RegistrarClienteCommand;
 
 import java.util.Optional;
 

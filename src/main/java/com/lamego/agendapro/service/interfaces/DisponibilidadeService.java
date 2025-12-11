@@ -1,7 +1,7 @@
 package com.lamego.agendapro.service.interfaces;
 
 import com.lamego.agendapro.domain.model.Disponibilidade;
-import com.lamego.agendapro.dto.command.AdicionarDisponibilidadeCommand;
+import com.lamego.agendapro.dto.disponibilidade.command.AdicionarDisponibilidadeCommand;
 
 import java.time.DayOfWeek;
 import java.util.List;

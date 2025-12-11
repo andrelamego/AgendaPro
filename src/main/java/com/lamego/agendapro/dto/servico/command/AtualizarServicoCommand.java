@@ -1,4 +1,4 @@
-package com.lamego.agendapro.dto.command;
+package com.lamego.agendapro.dto.servico.command;
 
 import java.math.BigDecimal;
 

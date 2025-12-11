@@ -1,4 +1,4 @@
-package com.lamego.agendapro.dto.command;
+package com.lamego.agendapro.dto.user.command;
 
 public record RegistrarClienteCommand(
         String nome,

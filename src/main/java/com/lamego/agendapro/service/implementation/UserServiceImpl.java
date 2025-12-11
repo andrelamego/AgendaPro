@@ -2,7 +2,7 @@ package com.lamego.agendapro.service.implementation;
 
 import com.lamego.agendapro.domain.enums.UserRole;
 import com.lamego.agendapro.domain.model.User;
-import com.lamego.agendapro.dto.command.RegistrarClienteCommand;
+import com.lamego.agendapro.dto.user.command.RegistrarClienteCommand;
 import com.lamego.agendapro.repository.UserRepository;
 import com.lamego.agendapro.service.interfaces.UserService;
 import jakarta.persistence.EntityNotFoundException;

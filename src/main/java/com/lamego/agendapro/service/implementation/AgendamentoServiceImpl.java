@@ -5,7 +5,7 @@ import com.lamego.agendapro.domain.model.Agendamento;
 import com.lamego.agendapro.domain.model.Profissional;
 import com.lamego.agendapro.domain.model.Servico;
 import com.lamego.agendapro.domain.model.User;
-import com.lamego.agendapro.dto.command.CriarAgendamentoCommand;
+import com.lamego.agendapro.dto.agendamento.command.CriarAgendamentoCommand;
 import com.lamego.agendapro.repository.*;
 import com.lamego.agendapro.service.interfaces.AgendamentoService;
 import jakarta.persistence.EntityNotFoundException;

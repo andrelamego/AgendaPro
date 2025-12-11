@@ -1,7 +1,7 @@
 package com.lamego.agendapro.service.interfaces;
 
 import com.lamego.agendapro.domain.model.Agendamento;
-import com.lamego.agendapro.dto.command.CriarAgendamentoCommand;
+import com.lamego.agendapro.dto.agendamento.command.CriarAgendamentoCommand;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

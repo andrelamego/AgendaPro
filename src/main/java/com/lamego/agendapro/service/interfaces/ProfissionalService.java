@@ -1,8 +1,8 @@
 package com.lamego.agendapro.service.interfaces;
 
 import com.lamego.agendapro.domain.model.Profissional;
-import com.lamego.agendapro.dto.command.AtualizarProfissionalCommand;
-import com.lamego.agendapro.dto.command.CriarProfissionalCommand;
+import com.lamego.agendapro.dto.profissional.command.AtualizarProfissionalCommand;
+import com.lamego.agendapro.dto.profissional.command.CriarProfissionalCommand;
 
 import java.util.List;
 

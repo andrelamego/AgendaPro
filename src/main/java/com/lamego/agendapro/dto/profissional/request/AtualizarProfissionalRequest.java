@@ -1,6 +1,6 @@
-package com.lamego.agendapro.dto.command;
+package com.lamego.agendapro.dto.profissional.request;
 
-public record AtualizarProfissionalCommand(
+public record AtualizarProfissionalRequest(
         String nome,
         String telefone,
         String bio,

@@ -1,8 +1,8 @@
 package com.lamego.agendapro.service.implementation;
 
 import com.lamego.agendapro.domain.model.Servico;
-import com.lamego.agendapro.dto.command.AtualizarServicoCommand;
-import com.lamego.agendapro.dto.command.CriarServicoCommand;
+import com.lamego.agendapro.dto.servico.command.AtualizarServicoCommand;
+import com.lamego.agendapro.dto.servico.command.CriarServicoCommand;
 import com.lamego.agendapro.repository.ServicoRepository;
 import com.lamego.agendapro.service.interfaces.ServicoService;
 import jakarta.persistence.EntityNotFoundException;

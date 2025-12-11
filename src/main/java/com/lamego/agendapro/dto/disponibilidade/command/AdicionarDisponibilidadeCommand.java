@@ -1,4 +1,4 @@
-package com.lamego.agendapro.dto.command;
+package com.lamego.agendapro.dto.disponibilidade.command;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

@@ -1,4 +1,4 @@
-package com.lamego.agendapro.dto.command;
+package com.lamego.agendapro.dto.agendamento.command;
 
 import java.time.LocalDateTime;
 

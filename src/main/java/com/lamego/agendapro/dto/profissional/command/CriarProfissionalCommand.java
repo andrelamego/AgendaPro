@@ -1,4 +1,4 @@
-package com.lamego.agendapro.dto.command;
+package com.lamego.agendapro.dto.profissional.command;
 
 public record CriarProfissionalCommand(
         String nome,
