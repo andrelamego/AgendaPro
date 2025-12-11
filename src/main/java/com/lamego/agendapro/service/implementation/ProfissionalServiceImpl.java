@@ -95,4 +95,10 @@ public class ProfissionalServiceImpl implements ProfissionalService {
         return profissionalRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Profissional não encontrado."));
     }
+
+    @Override
+    public Profissional buscarPorEmail(String email) {
+        return profissionalRepository.findByUsuario_Email(email)
+                .orElseThrow(() -> new EntityNotFoundException("Profissional não encontrado."));
+    }
 }

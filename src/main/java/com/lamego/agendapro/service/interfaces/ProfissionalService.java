@@ -14,4 +14,6 @@ public interface ProfissionalService {
     List<Profissional> listarAtivos(boolean apenasAceitandoNovos);
 
     Profissional buscarPorId(Long id);
+
+    Profissional buscarPorEmail(String email);
 }

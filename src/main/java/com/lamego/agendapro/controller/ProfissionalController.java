@@ -6,6 +6,7 @@ import com.lamego.agendapro.dto.profissional.command.CriarProfissionalCommand;
 import com.lamego.agendapro.dto.profissional.request.AtualizarProfissionalRequest;
 import com.lamego.agendapro.dto.profissional.request.CriarProfissionalRequest;
 import com.lamego.agendapro.dto.profissional.response.ProfissionalResponse;
+import com.lamego.agendapro.security.SecurityUtils;
 import com.lamego.agendapro.service.interfaces.ProfissionalService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,11 +36,13 @@ public class ProfissionalController {
         return ProfissionalResponse.fromEntity(profissional);
     }
 
-    @PutMapping("/{id}")
-    public ProfissionalResponse atualizar(
-            @PathVariable Long id,
+    @PutMapping("/me")
+    public ProfissionalResponse atualizarMeuPerfil(
             @RequestBody AtualizarProfissionalRequest request
     ) {
+        String email = SecurityUtils.getCurrentUsername();
+        Profissional profissional = profissionalService.buscarPorEmail(email);
+
         var command = new AtualizarProfissionalCommand(
                 request.nome(),
                 request.telefone(),
@@ -48,7 +51,7 @@ public class ProfissionalController {
                 request.ativo()
         );
 
-        Profissional atualizado = profissionalService.atualizarPerfil(id, command);
+        Profissional atualizado = profissionalService.atualizarPerfil(profissional.getId(), command);
         return ProfissionalResponse.fromEntity(atualizado);
     }
 

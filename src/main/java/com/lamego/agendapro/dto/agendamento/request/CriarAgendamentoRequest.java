@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 
 public record CriarAgendamentoRequest(
         @NotNull Long profissionalId,
-        @NotNull Long clienteId,
         @NotNull Long servicoId,
         @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataHoraInicio,
         String observacoes

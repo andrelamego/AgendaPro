@@ -11,6 +11,9 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, Long
     // Encontrar profissional pelo usuario
     Optional<Profissional> findByUsuarioId(Long usuarioId);
 
+    // Encontrar profissional pelo email
+    Optional<Profissional> findByUsuario_Email(String email);
+
     // Listar profissionais ativos
     List<Profissional> findByAtivoTrue();
 
