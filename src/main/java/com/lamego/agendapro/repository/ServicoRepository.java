@@ -8,15 +8,18 @@ import java.util.Optional;
 
 public interface ServicoRepository extends JpaRepository<Servico, Long> {
 
-    // Listar servicos ativos para exibir pro cliente
-    List<Servico> findByAtivoTrueOrderByNomeAsc();
+    // serviços ativos de um profissional
+    List<Servico> findByProfissionalIdAndAtivoTrueOrderByNomeAsc(Long profissionalId);
 
-    // Usar em combos com filtro de texto
-    List<Servico> findByAtivoTrueAndNomeContainingIgnoreCaseOrderByNomeAsc(String nome);
+    // com filtro de nome
+    List<Servico> findByProfissionalIdAndAtivoTrueAndNomeContainingIgnoreCaseOrderByNomeAsc(
+            Long profissionalId,
+            String nome
+    );
 
-    // Garantir que nao tem dois servicos com mesmo nome
-    boolean existsByNomeIgnoreCase(String nome);
+    // checar nome duplicado por profissional
+    boolean existsByProfissionalIdAndNomeIgnoreCase(Long profissionalId, String nome);
 
-    // Buscar por nome exato
-    Optional<Servico> findByNomeIgnoreCase(String nome);
+    // buscar garantindo o dono
+    Optional<Servico> findByIdAndProfissionalId(Long servicoId, Long profissionalId);
 }

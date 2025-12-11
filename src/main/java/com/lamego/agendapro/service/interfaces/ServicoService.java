@@ -8,13 +8,16 @@ import java.util.List;
 
 public interface ServicoService {
 
-    Servico criarServico(CriarServicoCommand command);
+    Servico criarServico(Long profissionalId, CriarServicoCommand command);
 
-    Servico atualizarServico(Long id, AtualizarServicoCommand command);
+    Servico atualizarServico(Long profissionalId, Long servicoId, AtualizarServicoCommand command);
 
-    List<Servico> listarServicosAtivos(String filtroNome);
+    List<Servico> listarServicosDoProfissional(Long profissionalId, String filtroNome);
 
-    void inativarServico(Long id);
+    void inativarServico(Long profissionalId, Long servicoId);
 
-    Servico buscarPorId(Long id);
+    Servico buscarPorIdEProfissional(Long profissionalId, Long servicoId);
+
+    // para os clientes verem os serviços de um profissional
+    List<Servico> listarServicosDoProfissionalPublic(Long profissionalId);
 }

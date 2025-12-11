@@ -42,6 +42,10 @@ public class AgendamentoServiceImpl implements AgendamentoService {
         Servico servico = servicoRepository.findById(command.servicoId())
                 .orElseThrow(() -> new EntityNotFoundException("Serviço não encontrado!"));
 
+        if (!servico.getProfissional().getId().equals(profissional.getId())) {
+            throw new IllegalArgumentException("Serviço não pertence ao profissional selecionado.");
+        }
+
         LocalDateTime inicio = command.dataHoraInicio();
         LocalDateTime fim = inicio.plusMinutes(servico.getDuracaoMinutos());
 

@@ -6,17 +6,32 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "servicos")
+@Table(name = "servicos",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_servicos_profissional_nome",
+                        columnNames = {"profissional_id", "nome"}
+                )
+        })
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    // dono do serviço
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "profissional_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_servico_profissional")
+    )
+    private Profissional profissional;
 
     @Column(nullable = false, length = 120)
     private String nome;
