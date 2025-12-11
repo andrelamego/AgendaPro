@@ -11,20 +11,20 @@ import java.util.List;
 
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
     //Próximos agendamentos de um profissional (agenda do dia/semana)
-    List<Agendamento> findByProfissionalIdAndDataHoraInicio(
+    List<Agendamento> findByProfissionalIdAndDataHoraInicioBetweenOrderByDataHoraInicioAsc(
             Long profissionalId,
             LocalDateTime inicio,
             LocalDateTime fim
     );
 
     //Próximos agendamentos de um cliente
-    List<Agendamento> findByClienteIdAndDataHoraInicio(
+    List<Agendamento> findByClienteIdAndDataHoraInicioGreaterThanEqualOrderByDataHoraInicioAsc(
             Long clienteId,
             LocalDateTime aPartirDe
     );
 
     //Agendamento de um cliente em um intervalo
-    List<Agendamento> findByClienteIdAndDataHoraInicioBetween(
+    List<Agendamento> findByClienteIdAndDataHoraInicioBetweenOrderByDataHoraInicioDesc(
             Long clienteId,
             LocalDateTime inicio,
             LocalDateTime fim
@@ -49,7 +49,7 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
     );
 
     // Buscar agendamentos futuros de um profissional
-    List<Agendamento> findByProfissionalIdAndDataHoraInicioGreaterThanEqual(
+    List<Agendamento> findTop20ByProfissionalIdAndDataHoraInicioGreaterThanEqualOrderByDataHoraInicioAsc(
             Long profissionalId,
             LocalDateTime aPartirDe
     );
@@ -61,7 +61,7 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
         where a.dataHoraInicio between :inicio and :fim
         group by a.status
     """)
-    List<Object[]> countByStatusEntreDatas(
+    List<Object[]> contarPorStatusEntreDatas(
             @Param("inicio") LocalDateTime inicio,
             @Param("fim") LocalDateTime fim
     );
