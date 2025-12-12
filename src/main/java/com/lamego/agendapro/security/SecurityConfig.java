@@ -49,6 +49,7 @@ public class SecurityConfig {
                         // rotas públicas:
                         .requestMatchers(
                                 "/api/users/register-cliente",
+                                "/api/profissionais",
                                 "/api/auth/login",
                                 "/v3/api-docs/**",
                                 "/swagger-ui.html",
@@ -74,7 +75,8 @@ public class SecurityConfig {
         // em dev:
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "http://localhost:3000"
+                "http://localhost:3000",
+                "http://localhost:8080"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));

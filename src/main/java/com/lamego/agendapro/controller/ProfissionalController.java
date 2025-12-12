@@ -55,6 +55,13 @@ public class ProfissionalController {
         return ProfissionalResponse.fromEntity(atualizado);
     }
 
+    @GetMapping("/me")
+    public ProfissionalResponse meuPerfil() {
+        String email = SecurityUtils.getCurrentUsername();
+        Profissional profissional = profissionalService.buscarPorEmail(email);
+        return ProfissionalResponse.fromEntity(profissional);
+    }
+
     @GetMapping
     public List<ProfissionalResponse> listar(@RequestParam(defaultValue = "false") boolean apenasAceitandoNovos) {
         return profissionalService.listarAtivos(apenasAceitandoNovos)

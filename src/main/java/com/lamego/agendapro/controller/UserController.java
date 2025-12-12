@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 

@@ -21,7 +21,6 @@ public class DisponibilidadeServiceImpl implements DisponibilidadeService {
 
     private final DisponibilidadeRepository disponibilidadeRepository;
     private final ProfissionalRepository profissionalRepository;
-    private final DisponibilidadeService disponibilidadeService;
 
     @Override
     public Disponibilidade adicionarDisponibilidade(AdicionarDisponibilidadeCommand command) {
